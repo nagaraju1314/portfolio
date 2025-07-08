@@ -1,103 +1,149 @@
-'use client'
-import React from 'react'
-import Link from 'next/link'
-import { useState, useEffect } from 'react'
-import { navLinks } from '@/constants/constants'
-import { styles } from '@/styles'
-import { menu, close } from '@/assets'
-import logo from '@/assets/logo.svg'
-import Image from 'next/image'
+"use client";
+import React, { useState, useEffect } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Navbar = () => {
-  const [active, setActive] = useState("");
-  const [toggle, setToggle] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const [isScrolled, setIsScrolled] = useState(false);
 
+  // Detect scroll and change navbar background
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 100) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Smooth scroll function
+  const handleMenuItemClick = (sectionId) => {
+    setActiveSection(sectionId);
+    setIsOpen(false);
+
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const menuItems = [
+    { id: "about", label: "About" },
+    { id: "skills", label: "Skills" },
+    { id: "experience", label: "Experience" },
+    { id: "work", label: "Projects" },
+    { id: "contact", label: "Contact" },
+  ];
+
   return (
     <nav
-      className={`${
-        styles.paddingX
-      } w-full flex items-center py-4 fixed top-0 z-20 ${
-        scrolled ? " bg-primary  rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-80 " : "bg-transparent"
+      className={`fixed top-0 w-full z-50 transition duration-300 px-[7vw] md:px-[7vw] lg:px-[20vw] ${
+        isScrolled
+          ? "bg-[#050414] bg-opacity-50 backdrop-blur-md shadow-md"
+          : "bg-transparent"
       }`}
     >
-      <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
-        <Link
-          href='/'
-          className='flex items-center gap-2'
-          onClick={() => {
-            setActive("");
-            window.scrollTo(0, 0);
-          }}
-        >
-          <Image src={logo} alt='logo' className='w-10 h-10 object-contain' />
-          <p className='text-white text-[29px] font-bold cursor-pointer flex relative right-2 '>
-            imanshu &nbsp;
-            <span className='sm:block hidden'> </span>
-          </p>
-        </Link>
+      <div className="text-white py-5 flex justify-between items-center">
+        {/* Logo */}
+        <div className="text-lg font-semibold cursor-pointer">
+          <span className="text-[#8245ec]">&lt;</span>
+          <span className="text-white">Nagaraju</span>
+          <span className="text-[#8245ec]">/</span>
+          <span className="text-white">Kanchipati</span>
+          <span className="text-[#8245ec]">&gt;</span>
+        </div>
 
-        <ul className='list-none hidden sm:flex flex-row gap-10'>
-          {navLinks.map((nav) => (
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex space-x-8 text-gray-300">
+          {menuItems.map((item) => (
             <li
-              key={nav.id}
-              className={`${
-                active === nav.title ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(nav.title)}
+              key={item.id}
+              className={`cursor-pointer hover:text-[#8245ec] ${
+                activeSection === item.id ? "text-[#8245ec]" : ""
+              }`}
             >
-              <a data-scroll-to href={`#${nav.id}`}>{nav.title}</a>
+              <button onClick={() => handleMenuItemClick(item.id)}>
+                {item.label}
+              </button>
             </li>
           ))}
         </ul>
 
-        <div className='sm:hidden flex flex-1 justify-end items-center'>
-          <Image
-            src={toggle ? close : menu}
-            alt='menu'
-            className='w-[28px] h-[28px] object-contain'
-            onClick={() => setToggle(!toggle)}
-          />
-
-          <div
-            className={`${
-              !toggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+        {/* Social Icons */}
+        <div className="hidden md:flex space-x-4">
+          <a
+            href="https://github.com/nagaraju1314"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-300 hover:text-[#8245ec]"
           >
-            <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
-              {navLinks.map((nav) => (
-                <li
-                  key={nav.id}
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === nav.title ? "text-white" : "text-secondary"
-                  }`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(nav.title);
-                  }}
-                >
-                  <a data-scroll-to href={`#${nav.id}`}>{nav.title}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
+            <FaGithub size={24} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/kanchipati-nagaraju-328b5b205/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-300 hover:text-[#8245ec]"
+          >
+            <FaLinkedin size={24} />
+          </a>
+        </div>
+
+        {/* Mobile Menu Icon */}
+        <div className="md:hidden">
+          {isOpen ? (
+            <FiX
+              className="text-3xl text-[#8245ec] cursor-pointer"
+              onClick={() => setIsOpen(false)}
+            />
+          ) : (
+            <FiMenu
+              className="text-3xl text-[#8245ec] cursor-pointer"
+              onClick={() => setIsOpen(true)}
+            />
+          )}
         </div>
       </div>
+
+      {/* Mobile Menu Items */}
+      {isOpen && (
+        <div className="absolute top-16 left-1/2 transform -translate-x-1/2 w-4/5 bg-[#050414] bg-opacity-50 backdrop-filter backdrop-blur-lg z-50 rounded-lg shadow-lg md:hidden">
+          <ul className="flex flex-col items-center space-y-4 py-4 text-gray-300">
+            {menuItems.map((item) => (
+              <li
+                key={item.id}
+                className={`cursor-pointer hover:text-white ${
+                  activeSection === item.id ? "text-[#8245ec]" : ""
+                }`}
+              >
+                <button onClick={() => handleMenuItemClick(item.id)}>
+                  {item.label}
+                </button>
+              </li>
+            ))}
+            <div className="flex space-x-4">
+              <a
+                href="https://github.com/nagaraju1314"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-white"
+              >
+                <FaGithub size={24} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/kanchipati-nagaraju-328b5b205/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-white"
+              >
+                <FaLinkedin size={24} />
+              </a>
+            </div>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 };

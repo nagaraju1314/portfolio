@@ -25,6 +25,12 @@ import {
   jwt,
   nextauth,
   socialSphere,
+  techoutsLogo,
+  tajWebsite,
+  vivanta,
+  ginger,
+  grasimPaints,
+  ssBeauty,
 } from "../assets";
 
 export const navLinks = [
@@ -48,17 +54,9 @@ const services = [
     icon: web,
   },
   {
-    title: "Backend Developer",
-    icon: mobile,
-  },
-  {
     title: "Programmer",
     icon: backend,
   },
-  // {
-  //   title: "Creator",
-  //   icon: creator,
-  // },
 ];
 
 const technologies = [
@@ -100,10 +98,6 @@ const technologies = [
     name: "MongoDB",
     icon: mongodb,
   },
-  // {
-  //   name: "Three JS",
-  //   icon: threejs,
-  // },
   {
     name: "git",
     icon: git,
@@ -124,25 +118,13 @@ const technologies = [
     name: "JWT",
     icon: jwt,
   },
-  // {
-  //   name: "NextAuth",
-  //   icon: nextauth,
-  // },
-  // {
-  //   name: "figma",
-  //   icon: figma,
-  // },
-  // {
-  //   name: "docker",
-  //   icon: docker,
-  // },
 ];
 
 const projects = [
   {
-    name: "InkSync",
+    name: "Taj IHCL",
     description:
-      "A real-time collaborative whiteboard web application built with NextJs, Express, and Socket.io.",
+      "Developed a responsive, high-end website for Taj Hotels (IHCL) showcasing luxury properties and enabling seamless booking. Focused on elegant UI/UX, performance, and brand-aligned design",
     features: [
       "Users can create a room and invite others to join the room using a unique room code.",
       "Users can draw on the whiteboard and the changes will be reflected in real-time to all the users in the room.",
@@ -150,33 +132,26 @@ const projects = [
     tags: [
       {
         name: "NextJs",
-        color: "blue-text-gradient",
+        color: "black-text-gradient",
       },
       {
-        name: "ExpressJs",
-        color: "green-text-gradient",
-      },
-      {
-        name: "Socket.io",
-        color: "pink-text-gradient",
-      },
-      {
-        name: "Tailwind",
+        name: "Sanity",
         color: "orange-text-gradient",
       },
       {
-        name: "NodeJs",
+        name: "MUI",
         color: "blue-text-gradient",
       },
     ],
-    image: inkSync,
-    source_code_link: "https://github.com/himanshu8443/InkSync",
-    live_link: "https://www.inksync.cloud/",
+    textColor: "#AD8B3A",
+    image: tajWebsite,
+    source_code_link: "",
+    live_link: "https://www.tajhotels.com/en-in",
   },
   {
-    name: "Hayasaka",
+    name: "Vivanta",
     description:
-      "A dynamic full-stack music streaming web application with Next.js 13 and MongoDB.",
+      "Developed a vibrant, responsive website for Vivanta (IHCL), emphasizing modern design, smooth navigation, and an optimized booking experience.",
     features: [
       "User authentication using NextAuth.js with JWT and OAuth providers.",
       "Redux to Manage app state effectively.",
@@ -190,37 +165,27 @@ const projects = [
     ],
     tags: [
       {
-        name: "react",
-        color: "blue-text-gradient",
+        name: "NextJs",
+        color: "black-text-gradient",
       },
       {
-        name: "mongodb",
-        color: "green-text-gradient",
-      },
-      {
-        name: "tailwind",
-        color: "pink-text-gradient",
-      },
-      {
-        name: "nextjs",
+        name: "Sanity",
         color: "orange-text-gradient",
       },
       {
-        name: "nextauth",
+        name: "MUI",
         color: "blue-text-gradient",
       },
-      {
-        name: "redux",
-        color: "green-text-gradient",
-      },
     ],
-    image: carrent,
-    source_code_link: "https://github.com/himanshu8443/hayasaka",
-    live_link: "https://hayasaka.live/",
+    textColor: "#502C8E",
+    image: vivanta,
+    source_code_link: "",
+    live_link: "https://www.vivantahotels.com/en-in",
   },
   {
-    name: "Study Notion",
-    description: "Developed an educational technology website with CMS.",
+    name: "Ginger",
+    description:
+      "Developed a clean, fast-loading website for Ginger Hotels (IHCL), focused on smart, budget-friendly travel with intuitive UX and streamlined booking functionality",
     features: [
       "Implemented Email verification and using OTP user authentication and login/signup functionality using JWT for secure access to the platform.",
       "Students can browse and purchase courses. Instructors can create new courses, edit existing courses, and delete courses they have created.",
@@ -231,65 +196,54 @@ const projects = [
     ],
     tags: [
       {
-        name: "react",
-        color: "blue-text-gradient",
+        name: "NextJs",
+        color: "black-text-gradient",
       },
       {
-        name: "restapi",
-        color: "green-text-gradient",
-      },
-      {
-        name: "ExpressJs",
-        color: "pink-text-gradient",
-      },
-      {
-        name: "mongodb",
+        name: "Sanity",
         color: "orange-text-gradient",
       },
       {
-        name: "tailwind",
+        name: "MUI",
         color: "blue-text-gradient",
       },
-      {
-        name: "nodejs",
-        color: "green-text-gradient",
-      },
     ],
-    image: jobit,
-    source_code_link: "https://github.com/himanshu8443/Study-Notion-master",
-    live_link: "https://studynotion-master.vercel.app/",
+    backgroundImage: "linear-gradient(#FFA100,#F7470F,#EE1162)",
+    image: ginger,
+    source_code_link: "",
+    live_link: "https://www.gingerhotels.com/",
   },
   {
-    name: "FlipKart Price Tracker",
+    name: "SSBeauty",
     description:
-      "Chrome extension to track FlipKart product prices and send an alert to users when prices go below the user-selected price.",
+      "Developed a modern, responsive website for ssBeauty, highlighting beauty services and products with a sleek UI, easy appointment booking, and engaging visuals.",
     features: [
       "Users can add products to the watchlist by clicking on the extension icon on the product page.",
       "Users can set a price alert by entering the desired price for the product.",
     ],
     tags: [
       {
-        name: "JavaScript",
+        name: "NextJs",
+        color: "black-text-gradient",
+      },
+      {
+        name: "Sanity",
+        color: "orange-text-gradient",
+      },
+      {
+        name: "MUI",
         color: "blue-text-gradient",
       },
-      {
-        name: "Chrome Extension",
-        color: "green-text-gradient",
-      },
-      {
-        name: "ReactJs",
-        color: "pink-text-gradient",
-      },
     ],
-    image: tracker,
-    source_code_link: "https://github.com/himanshu8443/FlipKart-Price-Tracker",
-    live_link:
-      "https://chromewebstore.google.com/detail/fliptrack-flipkart-price/pekpfcghlbljghaojdlajgpceebobokd?hl=en",
+    textColor: "#AD184C",
+    image: ssBeauty,
+    source_code_link: "",
+    live_link: "https://www.ssbeauty.in/",
   },
   {
-    name: "Social Sphere",
+    name: "Grasim Paints",
     description:
-      "A full-stack social media application with user authentication, infinite scroll, and image and video uploads.",
+      "Developed an engaging, responsive website for Grasim Paints, showcasing product ranges with vibrant visuals and user-friendly navigation to enhance customer experience.",
     features: [
       "User authentication using JWT and OAuth providers.",
       "Infinite scroll for posts.",
@@ -300,118 +254,68 @@ const projects = [
     ],
     tags: [
       {
-        name: "react",
-        color: "blue-text-gradient",
+        name: "HTML",
+        color: "black-text-gradient",
       },
       {
-        name: "nodejs",
-        color: "green-text-gradient",
-      },
-      {
-        name: "Supabase",
-        color: "pink-text-gradient",
-      },
-      {
-        name: "tailwind",
+        name: "CSS",
         color: "orange-text-gradient",
       },
       {
-        name: "redux",
+        name: "Javascript",
         color: "blue-text-gradient",
       },
     ],
-    image: socialSphere,
-    source_code_link: "https://github.com/himanshu8443/SocialSphere",
-    live_link: "https://socialspherex.vercel.app/",
+    textColor: "#198F4ACC",
+    image: grasimPaints,
+    source_code_link: "",
+    live_link: "https://www.grasim.com/",
   },
 ];
 
-// const experiences = [
-//   {
-//     title: "React.js Developer",
-//     company_name: "Starbucks",
-//     icon: starbucks,
-//     iconBg: "#383E56",
-//     date: "March 2020 - April 2021",
-//     points: [
-//       "Developing and maintaining web applications using React.js and other related technologies.",
-//       "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-//       "Implementing responsive design and ensuring cross-browser compatibility.",
-//       "Participating in code reviews and providing constructive feedback to other developers.",
-//     ],
-//   },
-//   {
-//     title: "React Native Developer",
-//     company_name: "Tesla",
-//     icon: tesla,
-//     iconBg: "#E6DEDD",
-//     date: "Jan 2021 - Feb 2022",
-//     points: [
-//       "Developing and maintaining web applications using React.js and other related technologies.",
-//       "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-//       "Implementing responsive design and ensuring cross-browser compatibility.",
-//       "Participating in code reviews and providing constructive feedback to other developers.",
-//     ],
-//   },
-//   {
-//     title: "Web Developer",
-//     company_name: "Shopify",
-//     icon: shopify,
-//     iconBg: "#383E56",
-//     date: "Jan 2022 - Jan 2023",
-//     points: [
-//       "Developing and maintaining web applications using React.js and other related technologies.",
-//       "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-//       "Implementing responsive design and ensuring cross-browser compatibility.",
-//       "Participating in code reviews and providing constructive feedback to other developers.",
-//     ],
-//   },
-//   {
-//     title: "Full stack Developer",
-//     company_name: "Meta",
-//     icon: meta,
-//     iconBg: "#E6DEDD",
-//     date: "Jan 2023 - Present",
-//     points: [
-//       "Developing and maintaining web applications using React.js and other related technologies.",
-//       "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-//       "Implementing responsive design and ensuring cross-browser compatibility.",
-//       "Participating in code reviews and providing constructive feedback to other developers.",
-//     ],
-//   },
-// ];
-
-// const testimonials = [
-//   {
-//     testimonial:
-//       "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-//     name: "Sara Lee",
-//     designation: "CFO",
-//     company: "Acme Co",
-//     image: "https://randomuser.me/api/portraits/women/4.jpg",
-//   },
-//   {
-//     testimonial:
-//       "I've never met a web developer who truly cares about their clients' success like Rick does.",
-//     name: "Chris Brown",
-//     designation: "COO",
-//     company: "DEF Corp",
-//     image: "https://randomuser.me/api/portraits/men/5.jpg",
-//   },
-//   {
-//     testimonial:
-//       "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-//     name: "Lisa Wang",
-//     designation: "CTO",
-//     company: "456 Enterprises",
-//     image: "https://randomuser.me/api/portraits/women/6.jpg",
-//   },
-// ];
+const experiences = [
+  {
+    id: 0,
+    img: techoutsLogo,
+    role: "Front end Developer",
+    company: "Techouts",
+    date: "Feb-2022 - Present",
+    desc: "Developed dynamic and scalable web applications using the Next js, handling both frontend development. Collaborated with cross-functional teams to build responsive UI, implement RESTful APIs, and optimize application performance in an agile environment.",
+    skills: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React JS",
+      "TypeScript",
+      "Material Ui",
+      "Mobx",
+      "Next Js",
+    ],
+  },
+  {
+    id: 1,
+    img: techoutsLogo,
+    role: "Front end Developer",
+    company: "Techouts",
+    date: "Feb-2022 - Present",
+    desc: "Developed dynamic and scalable web applications using the Next js, handling both frontend development. Collaborated with cross-functional teams to build responsive UI, implement RESTful APIs, and optimize application performance in an agile environment.",
+    skills: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React JS",
+      "TypeScript",
+      "Material Ui",
+      "Mobx",
+      "Next Js",
+    ],
+  },
+];
 
 export {
   services,
   technologies,
-  //  experiences,
+  experiences,
   //  testimonials,
   projects,
 };
