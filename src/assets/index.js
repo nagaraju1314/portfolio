@@ -30,13 +30,19 @@ import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
+import tajWebsite from "./company/taj-website.png";
+import vivanta from "./company/vivanta-website.png";
+import ginger from "./company/ginger-website.png";
+
+import ssBeauty from "./company/ss-beauty-website.png";
+import grasimPaints from "./company/grasim-paints.png";
 
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import inkSync from "./ink.png";
 import tracker from "./tracker.png";
 import socialSphere from "./socialSphere.png";
-
+import techoutsLogo from "./techoutsLogo.png";
 export {
   logo,
   backend,
@@ -73,4 +79,10 @@ export {
   java,
   jwt,
   nextauth,
+  techoutsLogo,
+  tajWebsite,
+  vivanta,
+  ginger,
+  grasimPaints,
+  ssBeauty,
 };
