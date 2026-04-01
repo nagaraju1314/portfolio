@@ -71,10 +71,6 @@ const technologies = [
     position: [2, 0, 0],
   },
   {
-    name: "Express JS",
-    icon: express,
-  },
-  {
     name: "JavaScript",
     icon: javascript,
   },
@@ -95,10 +91,6 @@ const technologies = [
     icon: nodejs,
   },
   {
-    name: "MongoDB",
-    icon: mongodb,
-  },
-  {
     name: "git",
     icon: git,
   },
@@ -109,15 +101,7 @@ const technologies = [
   {
     name: "CSS 3",
     icon: css,
-  },
-  {
-    name: "Java",
-    icon: java,
-  },
-  {
-    name: "JWT",
-    icon: jwt,
-  },
+  }
 ];
 
 const projects = [

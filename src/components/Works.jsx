@@ -58,10 +58,12 @@ const ProjectCard = ({
 
   return (
     <div className="bg-tertiary bg-opacity-70 p-5 rounded-2xl gap-4">
+      {name && 
       <h3 className="text-white font-bold text-[28px] flex gap-2 items-center my-2 ">
         {name}
         <HiLink size={15} />
       </h3>
+      }
       <div className="lg:flex gap-10 lg:flex-row lg:justify-between lg:items-center">
         <Tilt className=" lg:w-[90%] lg:h-[90%] w-full h-full">
           <div className="relative cursor-pointer flex justify-between transition-all duration-500">
@@ -154,11 +156,9 @@ const ProjectCard = ({
 const Works = () => {
   return (
     <>
-      <div className="relative">
+      <div id="projects" className="relative">
         <div>
-          <p id="work" className={`${styles.sectionSubText} `}>
-            My work
-          </p>
+          <p className={`${styles.sectionSubText} `}>My work</p>
           <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
         </div>
 
