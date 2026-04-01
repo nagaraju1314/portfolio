@@ -3,10 +3,20 @@ import React, { useState, useEffect } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
+ const menuItems = [
+    { id: "about", label: "About" },
+    { id: "skills", label: "Skills" },
+    { id: "experience", label: "Experience" },
+    { id: "projects", label: "Projects" },
+    { id: "contact", label: "Contact" },
+  ];
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
+  console.log('isScrolled: ', isScrolled);
+  const [activeId, setActiveId] = useState("");
+  console.log('activeId: ', activeId);
 
   // Detect scroll and change navbar background
   useEffect(() => {
@@ -17,6 +27,32 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+
+            setActiveId(entry.target.id);
+            console.log(entry.target.id,"entry.target.id---")
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+      }
+    );
+
+    menuItems.forEach((item) => {
+      const el = document.getElementById(item.id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
 
   // Smooth scroll function
   const handleMenuItemClick = (sectionId) => {
@@ -29,13 +65,7 @@ const Navbar = () => {
     }
   };
 
-  const menuItems = [
-    { id: "about", label: "About" },
-    { id: "skills", label: "Skills" },
-    { id: "experience", label: "Experience" },
-    { id: "work", label: "Projects" },
-    { id: "contact", label: "Contact" },
-  ];
+ 
 
   return (
     <nav
@@ -61,7 +91,7 @@ const Navbar = () => {
             <li
               key={item.id}
               className={`cursor-pointer hover:text-[#8245ec] ${
-                activeSection === item.id ? "text-[#8245ec]" : ""
+                activeSection === item.id || item?.label?.toLowerCase() === activeId ?  isScrolled === false ? "": "text-[#8245ec]" : ""
               }`}
             >
               <button onClick={() => handleMenuItemClick(item.id)}>
