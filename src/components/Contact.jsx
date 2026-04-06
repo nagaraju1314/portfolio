@@ -29,53 +29,48 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    console.log('Service ID: ', process.env.MAIL_PASS);
-    e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
-      toast.error("Please fill all the fields.");
-      return;
-    }
-    setLoading(true);
-    try {
-    emailjs
-      .send(
-        process.env.SERVICE_ID,
-        process.env.TEMPLATE_ID,
-        {
-          from_name: form.name,
-          to_name: "Himanshu Sangwan",
-          from_email: form.email,
-          to_email: "sangwanhimanshu8443@gmail.com",
-          message: form.message,
-        },
-        process.env.PUBLIC_KEY
-      )
-      .then(
-        () => {
-          setLoading(false);
-          toast.success("Thanks for reaching out. I'll get back to you soon.");
+  const sendEmail = (e) => {
+  e.preventDefault();
 
-          setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
-        },
-        (error) => {
-          setLoading(false);
-          console.error('FAILED...', error);
+  if (!form.name || !form.email || !form.message) {
+    toast.error("Please fill all the fields.");
+    return;
+  }
 
-          toast.error("Oops! Something went wrong. Please try again.");
-        }
-        
-      );
-    } catch (error) {
-      setLoading(false);
-      console.error('FAILED...', error);
-      toast.error("Oops! Something went wrong. Please try again.");
-    }
-  };
+  setLoading(true);
+
+  emailjs.sendForm(
+    "service_69t6hxd",
+    "template_2tosfpf",
+    e.target,
+    "Ny09CS0H7qwuR3qsb"
+  )
+   .then(() => {
+    // 2️⃣ Send auto-reply to USER (NEW)
+    return emailjs.send(
+      "service_69t6hxd",
+      "template_ihdoyac", // your auto-reply template
+      {
+        name: form?.name,
+        email: form?.email,
+        message: form?.message,
+      },
+      "Ny09CS0H7qwuR3qsb"
+    );
+  })
+  .then(() => {
+    setLoading(false);
+    toast.success("Message sent!");
+    setForm({ name: "", email: "", message: "" });
+  })
+  .catch(() => {
+    setLoading(false);
+    toast.error("Failed to send message.");
+  });
+};
+
+
+
 
   return (
     <div
@@ -90,12 +85,13 @@ const Contact = () => {
 
         <form
           ref={formRef}
-          onSubmit={handleSubmit}
+          onSubmit={sendEmail}
           className='mt-12 flex flex-col gap-8'
         >
           <label className='flex flex-col'>
             <span className='text-white font-medium mb-4'>Your Name</span>
             <input
+            required
               type='text'
               name='name'
               value={form.name}
@@ -107,17 +103,19 @@ const Contact = () => {
           <label className='flex flex-col'>
             <span className='text-white font-medium mb-4'>Your email</span>
             <input
+            required
               type='email'
               name='email'
               value={form.email}
               onChange={handleChange}
-              placeholder="What's your web address?"
+              placeholder="What's your email?"
               className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
             />
           </label>
           <label className='flex flex-col'>
             <span className='text-white font-medium mb-4'>Your Message</span>
             <textarea
+            required
               rows={7}
               name='message'
               value={form.message}
